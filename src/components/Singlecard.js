@@ -5,25 +5,14 @@ let i = 0;
 let checkArray = [];
 let style = [];
 
-// const prevCountRef = useRef();
-
 function SingleCard({ url, id }) {
-  const divRef = useRef();
   const [flipped, setFlipped] = useState(true);
-  const [firstCardNotMatching, setFirstCardNotMatching] = useState(false);
   const handleClick = (e) => {
-    if(i === 0) {
-      setFirstCardNotMatching(true)
-    }
     if (i < 2) {
-      // console.log(e.target.parentElement.style.display);
+
       i++;
-      // style.push(e.target.parentElement.style.display);
       style.push(e.target.parentElement.style);
       checkArray.push(e.target.dataset.url);
-      // console.log(flipped)
-      // console.log(checkArray)
-      // console.log(style)
       setFlipped(!flipped);
       if (checkArray.length === 2) {
         if (checkArray[0] === checkArray[1]) {
@@ -34,7 +23,6 @@ function SingleCard({ url, id }) {
           checkArray = [];
         } else {
           console.log("Not Equal");
-          setFirstCardNotMatching(true);
           i = 0;
           checkArray = [];
           style = [];
@@ -50,17 +38,10 @@ function SingleCard({ url, id }) {
       setFlipped(!flipped);
     }, 3000);
   }, []);
-  useEffect(() => {
-    if (firstCardNotMatching === true) {
-      console.log(divRef.current);
-    }
-  }, [firstCardNotMatching]);
   return (
     <>
       <div
-      ref={divRef}
         style={{
-          
           height: "80px",
           width: "80px",
           display: "flex",
