@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "antd/dist/antd.css";
+import "./App.css";
+import Header from "./components/Header";
+import Cardlist from "./components/Cardlist";
+import Dashboard from "./components/Dashboard";
+import { Layout } from "antd";
+const { Sider, Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Header />
+      <Layout>
+        <Content
+          style={{
+            backgroundColor: "#fff",
+            padding: "0 50px",
+            marginTop: "25px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Cardlist />
+        </Content>
+        <Sider
+          width={300}
+          theme="light"
+          style={{ padding: "0 50px 0 0", marginTop: "25px" }}
+        >
+          <Dashboard />
+        </Sider>
+      </Layout>
+    </>
   );
 }
 
